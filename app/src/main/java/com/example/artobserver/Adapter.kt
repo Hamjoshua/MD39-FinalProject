@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import kotlinx.coroutines.CoroutineScope
 
 
-class ImageAdapter(private val list: ArrayList<Photo>,
+class ImageAdapter(private val list: ArrayList<ObjectPicture>,
                    private val listener: ICellClickListener) :
     RecyclerView.Adapter<ImageAdapter.ViewHolder>(){
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
@@ -30,9 +30,9 @@ class ImageAdapter(private val list: ArrayList<Photo>,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val photo = list[position];
-        Glide.with(holder.imageView.context).load(photo.getUri()).into((holder.imageView))
+        Glide.with(holder.imageView.context).load(photo.imageLink).into((holder.imageView))
         holder.imageView.setOnClickListener{
-            listener.onCellClickListener(photo.getUri().toString())
+            listener.onCellClickListener(photo)
         }
     }
 }

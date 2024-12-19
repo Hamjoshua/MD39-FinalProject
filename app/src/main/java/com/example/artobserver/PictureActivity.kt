@@ -12,15 +12,14 @@ import com.google.android.material.snackbar.Snackbar
 
 class PictureActivity : AppCompatActivity() {
     companion object{
-        var PIC_LINK = "";
+        lateinit var PIC_OBJECT: ObjectPicture;
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_picture)
 
-        val link: String = PIC_LINK.toString();
         val imageView: ImageView = findViewById(R.id.picView);
-        Glide.with(this).load(link).into(imageView)
+        Glide.with(this).load(PIC_OBJECT.imageLink).into(imageView)
 
         setSupportActionBar(findViewById(R.id.toolbar));
     }
@@ -34,10 +33,8 @@ class PictureActivity : AppCompatActivity() {
         // Handle action bar item clicks here.
         val id = item.getItemId()
 
-        if (id == R.id.wiki_btn) {
-            val mainIntent = Intent(this, MainActivity::class.java).apply{
-                putExtra("picLink", PIC_LINK)
-            }
+        if (id == R.id.back_btn) {
+            val mainIntent = Intent(this, MainActivity::class.java)
             setResult(RESULT_OK, mainIntent)
             finish()
             return true
