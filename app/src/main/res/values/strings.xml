@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ArtObserver</string>
+    <string name="app_rus_name">Просмотр картины</string>
+    <string name="back_button">Назад</string>
 </resources>
