@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity(), ICellClickListener {
 
         CoroutineScope(Dispatchers.IO).launch {
             val wrapper: Wrapper = loadImages()
+            wrapper.objects = ArrayList<ObjectPicture>()
             for (id in wrapper.ids) {
                 val picture: ObjectPicture = loadSingleImage(id)
                 wrapper.objects.add(picture)
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity(), ICellClickListener {
     override fun onCellClickListener(obj: ObjectPicture) {
         val newIntent = Intent(this, PictureActivity::class.java)
         PictureActivity.PIC_OBJECT = obj
-        startActivityForResult(newIntent, 1)
+        startActivity(newIntent)
     }
 }
 

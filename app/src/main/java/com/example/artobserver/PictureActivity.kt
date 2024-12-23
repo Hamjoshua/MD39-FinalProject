@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
@@ -18,10 +19,14 @@ class PictureActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_picture)
 
-        val imageView: ImageView = findViewById(R.id.picView);
+        val imageView: ImageView = findViewById(R.id.picView)
         Glide.with(this).load(PIC_OBJECT.imageLink).into(imageView)
 
+        val textView: TextView = findViewById<TextView>(R.id.txtView)
+        textView.setText(PIC_OBJECT.credits)
+
         setSupportActionBar(findViewById(R.id.toolbar));
+        getSupportActionBar()?.setTitle("Просмотр картины");
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
